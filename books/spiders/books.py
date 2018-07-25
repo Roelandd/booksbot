@@ -15,5 +15,7 @@ class QuotesSpider(scrapy.Spider):
         for quote in response.css('div.pd_chosen_offer_cta'):
             yield {
                 'prijs': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[5]/div[1]/text()').extract_first(),
+                'data': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[1]/div[2]/div/div[1]/p/span[1]/text()').extract_first(),
+                'minuten': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[1]/div[2]/div/div[1]/p/span[2]/text()').extract_first(),
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
             }
