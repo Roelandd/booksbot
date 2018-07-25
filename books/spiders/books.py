@@ -14,6 +14,6 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         for quote in response.css('div.pd_chosen_offer_cta'):
             yield {
-                'toestel': quote.css('h1::text').extract_first(),
+                'toestel': quote.xpath('//*[@id="pd_title"]').extract_first(),
                 'prijs': quote.css('div.pd_offer_picker_row_price::text').extract_first()
             }
