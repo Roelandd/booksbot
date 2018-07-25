@@ -8,7 +8,7 @@ class QuotesSpider(scrapy.Spider):
         'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-100-minuten-2000-mb-4g-2-jaar',
         'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-100-minuten-5000-mb-4g-2-jaar',
         'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-100-minuten-10000-mb-4g-2-jaar',
-        'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-onbeperkt-minuten-onbeperkt-mb-4g-2-jaar',
+        'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-onbeperkt-bellen-onbeperkt-mb-4g-2-jaar',
     ]
 
     def parse(self, response):
