@@ -32,7 +32,7 @@ class BelsimpelSpider(scrapy.Spider):
     def parse(self, response):
         for quote in response.css('div.pd_chosen_offer_cta'):
             yield {
-                'url': response.requrest.url,
+                'url': response.request.url,
                 'prijs': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[5]/div[1]/text()').extract_first(),
                 'data': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[1]/div[2]/div/div[1]/p/span[1]/text()').extract_first(),
                 'minuten': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[1]/div[2]/div/div[1]/p/span[2]/text()').extract_first(),
