@@ -4,10 +4,17 @@ import scrapy
 class BelsimpelSpider(scrapy.Spider):
     name = "belsimpelspider"
     devices = [
+        'samsung-galaxy-s8/zwart/',
         'samsung-galaxy-s9/zwart/',
+        'samsung-galaxy-s9-plus/64gb-zwart',
         'apple-iphone-x/64gb-zwart/',
         'apple-iphone-8/64gb-zwart/',
-        'apple-iphone-8-plus/64gb-zwart/'
+        'apple-iphone-8-plus/64gb-zwart/',
+        'apple-iphone-7/32gb-zwart/'
+        'oneplus-6/zwart/',
+        'huawei-p20-lite/zwart/',
+        'huawei-p20/zwart',
+        'huawei-p20-pro/zwart/'
     ]
     subscriptions = [
         't-mobile-normaal-go-next-2-jaar-hsnwa3',
@@ -32,9 +39,15 @@ class BelsimpelSpider(scrapy.Spider):
 
     def parse(self, response):
         for quote in response.css('div.pd_chosen_offer_cta'):
+            prijs = quote.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first()
+            prijs = prijs[2:]
+            prijs = prijs[:3]
+            prijs - int(prijs)
+            gratisbij = prijs / 24
             yield {
                 'url': response.request.url,
                 'prijs': quote.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first(),
+                'gratisbij': gratisbij,
                 'data': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[2]/text()').extract_first(),
                 'minuten': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[1]/text()').extract_first(),
                 'provider': quote.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first(),
