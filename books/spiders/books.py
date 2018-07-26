@@ -13,7 +13,7 @@ class BelsimpelSpider(scrapy.Spider):
         'apple-iphone-7/32gb-zwart/'
         'oneplus-6/zwart/',
         'huawei-p20-lite/zwart/',
-        'huawei-p20/zwart',
+        'huawei-p20/zwart/',
         'huawei-p20-pro/zwart/'
     ]
     subscriptions = [
