@@ -2,14 +2,26 @@
 import scrapy
 
 
-class QuotesSpider(scrapy.Spider):
+class BelsimpelSpider(scrapy.Spider):
     name = "quotes"
-    start_urls = [
-        'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-100-minuten-2000-mb-4g-2-jaar',
-        'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-100-minuten-5000-mb-4g-2-jaar',
-        'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-100-minuten-10000-mb-4g-2-jaar',
-        'https://www.belsimpel.nl/samsung-galaxy-s9/zwart/aanbieding?abonnement=t2-onbeperkt-bellen-onbeperkt-mb-4g-2-jaar',
+    devices = [
+        'samsung-galaxy-s9/zwart',
+        'apple-iphone-x/zwart',
+        'apple-iphone-8/zwart',
+        'apple-iphone-8-plus/zwart'
     ]
+    subscriptions = [
+        't2-100-minuten-2000-mb-4g-2-jaar',
+        't2-100-minuten-5000-mb-4g-2-jaar',
+        't2-100-minuten-10000-mb-4g-2-jaar',
+        't2-onbeperkt-bellen-onbeperkt-mb-4g-2-jaar'
+    ]
+    start_urls = []
+
+    for dev in devices:
+        for sub in subscriptions:
+            url = 'http://www.belsimpel.nl/' + device + 'aanbieding?abonnement=' + sub
+            start_urls.append(url)
 
     def parse(self, response):
         for quote in response.css('div.pd_chosen_offer_cta'):
