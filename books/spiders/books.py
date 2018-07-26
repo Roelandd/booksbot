@@ -20,7 +20,7 @@ class BelsimpelSpider(scrapy.Spider):
 
     for dev in devices:
         for sub in subscriptions:
-            url = 'http://www.belsimpel.nl/' + device + 'aanbieding?abonnement=' + sub
+            url = 'http://www.belsimpel.nl/' + dev + 'aanbieding?abonnement=' + sub
             start_urls.append(url)
 
     def parse(self, response):
