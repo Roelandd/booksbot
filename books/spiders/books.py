@@ -42,7 +42,7 @@ class BelsimpelSpider(scrapy.Spider):
             prijs = quote.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first()
             prijs = prijs[2:]
             prijs = prijs[:3]
-            prijs - int(prijs)
+            prijs = int(prijs)
             gratisbij = prijs / 24
             yield {
                 'url': response.request.url,
