@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import scrapy
 
 
@@ -6,9 +5,9 @@ class BelsimpelSpider(scrapy.Spider):
     name = "quotes"
     devices = [
         'samsung-galaxy-s9/zwart/',
-        'apple-iphone-x/zwart/',
-        'apple-iphone-8/zwart/',
-        'apple-iphone-8-plus/zwart/'
+        'apple-iphone-x/64gb-zwart/',
+        'apple-iphone-8/64gb-zwart/',
+        'apple-iphone-8-plus/64gb-zwart/'
     ]
     subscriptions = [
         't2-100-minuten-2000-mb-4g-2-jaar',
