@@ -39,15 +39,9 @@ class BelsimpelSpider(scrapy.Spider):
 
     def parse(self, response):
         for quote in response.css('div.pd_chosen_offer_cta'):
-            prijs = quote.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first()
-            prijs = prijs[2:]
-            prijs = prijs[:3]
-            prijs = int(prijs)
-            gratisbij = prijs / 24
             yield {
                 'url': response.request.url,
                 'prijs': quote.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first(),
-                'gratisbij': gratisbij,
                 'data': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[2]/text()').extract_first(),
                 'minuten': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[1]/text()').extract_first(),
                 'provider': quote.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first(),
