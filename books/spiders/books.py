@@ -11,6 +11,7 @@ class BelsimpelSpider(scrapy.Spider):
     ]
     subscriptions = [
         't-mobile-normaal-go-next-2-jaar-hsnwa3',
+        't-mobile-normaal-go-next-2-jaar-hsnwa',
         'vodafone-red-2-jaar',
         'vodafone-start-xl-2-jaar',
         't2-100-minuten-2000-mb-4g-2-jaar',
@@ -33,8 +34,8 @@ class BelsimpelSpider(scrapy.Spider):
         for quote in response.css('div.pd_chosen_offer_cta'):
             yield {
                 'url': response.request.url,
-                'prijs': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[5]/div[1]/text()').extract_first(),
-                'data': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[1]/div[2]/div/div[1]/p/span[1]/text()').extract_first(),
-                'minuten': quote.xpath('/html/body/div[10]/div/div[1]/div[1]/div/div[4]/div[1]/div[2]/div/div[1]/p/span[2]/text()').extract_first(),
+                'prijs': quote.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first(),
+                'data': quote.xpath('//*[@class="fcs_table_col1"]/text()').extract_first(),
+                'minuten': quote.xpath('//*[@class="fcs_table_col2"]/text()').extract_first(),
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
             }
