@@ -2,7 +2,7 @@ import scrapy
 
 
 class BelsimpelSpider(scrapy.Spider):
-    name = "quotes"
+    name = "belsimpelspider"
     devices = [
         'samsung-galaxy-s9/zwart/',
         'apple-iphone-x/64gb-zwart/',
