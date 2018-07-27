@@ -42,12 +42,13 @@ class BelsimpelSpider(scrapy.Spider):
         for quote in response.css('div.pd_chosen_offer_cta'):
             yield {
                 'url': response.request.url,
-                'prijs': quote.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first(),
-#                'data': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[2]/text()').extract_first(),
-#                'minuten': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[1]/text()').extract_first(),
-                'provider': quote.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first(),
+                'prijs': quote.xpath('//*[@class="price size_lg"]/*/text()').extract_first(),
+                'abo': 'FUTURE'
+                'provider': quote.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first().lower()[:-11],
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
+                'shop': 'belsimpel'
             }
+
 
 class MobielSpider(scrapy.Spider):
     name = "mobielspider"
