@@ -49,9 +49,23 @@ class BelsimpelSpider(scrapy.Spider):
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
             }
 
-class GsmwebSpider(scrapy.Spider):
-    name = "gsmwebspider"
-    start_urls = ['https://www.gsmweb.nl/t-mobile&extra_cat=compleet&abo_cat=per%20maand&duration=24%20maanden']
+class BelsimpelSpider(scrapy.Spider):
+    name = "mobielspider"
+    devices = [
+        '',
+    ]
+    subscriptions = [
+        '',
+    ]
+    start_urls = ['https://www.mobiel.nl/abonnement/t-mobile/t-mobile-go-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31300&%5Bmax_price_incl_btw%5D=0#']
 
     def parse(self, response):
-        print(response)
+        for quote in response.css('section.proposition-phones-comparator__phone-list js-propositions-results'):
+            yield {
+                'url': response.request.url,
+                'prijs': quote.xpath('//*[@class="proposed-phone__recurring-price"]/text()').extract_first(),
+#                'data': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[2]/text()').extract_first(),
+#                'minuten': quote.xpath('//*[@data-scrollpoint_name="inhoud-abonnement"]/ul/li[1]/text()').extract_first(),
+                'provider': 't-mobile',
+                'toestel': quote.xpath('//*[@class="proposed-phone__image-and-name"]/text()').extract_first(),
+            }
