@@ -86,7 +86,7 @@ class GsmwebSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        for quote in response.xpath('//*[@class="brand"]'):
+        for quote in response.css('tr.brand"]'):
             print("brand detected")
             try:
                 yield {
