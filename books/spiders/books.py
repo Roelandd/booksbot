@@ -70,31 +70,11 @@ class MobielSpider(scrapy.Spider):
             try:
                 yield {
                     'url': response.request.url,
-                    'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first().strip(),
+                    'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first().strip()[2:4],
                     'abo': 'FUTURE',
                     'provider': response.request.url.split("/")[4],
                     'toestel': quote.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
-                }
-            except:
-                continue
-                
-                
-class GsmwebSpider(scrapy.Spider):
-    name = "gsmwebspider"
-    start_urls = [
-        'https://www.gsmweb.nl/tele2&duration=24&abo_cat=per%20maand'
-    ]
-
-    def parse(self, response):
-        for quote in response.css('tr.brand'):
-            print("brand detected")
-            try:
-                yield {
-                    'url': response.request.url,
-                    'prijs': ' ',
-                    'abo': 'FUTURE',
-                    'provider': response.css('h1').split(" ")[0],
-                    'toestel': quote.css('td.dark::text').extract()[1].strip(),
+                    'shop': 'mobiel'
                 }
             except:
                 continue
