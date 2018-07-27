@@ -42,7 +42,7 @@ class BelsimpelSpider(scrapy.Spider):
         for quote in response.css('div.pd_chosen_offer_cta'):
             yield {
                 'url': response.request.url,
-                'prijs': quote.xpath('//*[@class="price size_lg"]/*/text()').extract_first(),
+                'prijs': quote.xpath('//*[@class="price size_lg"]/text()').extract_first(),
                 'abo': 'FUTURE',
                 'provider': quote.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first().lower()[:-11],
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
