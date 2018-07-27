@@ -54,8 +54,5 @@ class GsmwebSpider(scrapy.Spider):
     start_urls = ['https://www.gsmweb.nl/t-mobile&extra_cat=compleet&abo_cat=per%20maand&duration=24%20maanden']
 
     def parse(self, response):
-        for quote in response.css('body'):
-            yield {
-                'url': response.request.url,
-                'row': quote.xpath('//*[@class="brand"]').extract()
-            }
+        rows = response.xpath('//*[@class="listing"]/*/*[2]').extract()
+        print(rows)
