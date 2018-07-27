@@ -53,6 +53,16 @@ class MobielSpider(scrapy.Spider):
     name = "mobielspider"
     start_urls = [
         'https://www.mobiel.nl/abonnement/t-mobile/t-mobile-go-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31300&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/vodafone/vodafone-start-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=32154&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/vodafone/vodafone-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31635&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/tele2/tele2-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31233&%5Bvoice_bundle%5D=31237&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/tele2/tele2-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31234&%5Bvoice_bundle%5D=31237&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/tele2/tele2-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31235&%5Bvoice_bundle%5D=31237&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/tele2/tele2-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31236&%5Bvoice_bundle%5D=31238&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/hollandsnieuwe/hollandsnieuwe-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=36026&%5Bvoice_bundle%5D=36290&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/telfort/telfort-mobiel-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=35678&%5Bvoice_bundle%5D=35680&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/kpn/kpn-basis-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=30871&%5Bmax_price_incl_btw%5D=0#',
+        'https://www.mobiel.nl/abonnement/kpn/kpn-zorgeloos-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=30979&%5Bmax_price_incl_btw%5D=0#'
     ]
 
     def parse(self, response):
