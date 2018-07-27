@@ -43,7 +43,7 @@ class BelsimpelSpider(scrapy.Spider):
             yield {
                 'url': response.request.url,
                 'prijs': quote.xpath('//*[@class="price size_lg"]/*/text()').extract_first(),
-                'abo': 'FUTURE'
+                'abo': 'FUTURE',
                 'provider': quote.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first().lower()[:-11],
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
                 'shop': 'belsimpel'
