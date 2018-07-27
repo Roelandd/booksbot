@@ -65,5 +65,5 @@ class MobielSpider(scrapy.Spider):
                 'url': response.request.url,
                 'prijs': quote.xpath('//*[@class="proposed-phone__recurring-price"]/text()').extract_first(),
                 'provider': 't-mobile',
-                'toestel': quote.xpath('//*[@class="proposed-phone__row js-phone-proposition"]/*/text()[2]').extract_first(),
+                'toestel': quote.xpath('//*[@class="proposed-phone__row js-phone-proposition"]/*[2]/text()').extract_first(),
             }
