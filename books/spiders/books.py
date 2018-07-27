@@ -51,13 +51,9 @@ class BelsimpelSpider(scrapy.Spider):
 
 class MobielSpider(scrapy.Spider):
     name = "mobielspider"
-    devices = [
-        '',
+    start_urls = [
+        'https://www.mobiel.nl/abonnement/t-mobile/t-mobile-go-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31300&%5Bmax_price_incl_btw%5D=0#',
     ]
-    subscriptions = [
-        '',
-    ]
-    start_urls = ['https://www.mobiel.nl/abonnement/t-mobile/t-mobile-go-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31300&%5Bmax_price_incl_btw%5D=0#']
 
     def parse(self, response):
         for quote in response.xpath('//*[@class="proposed-phone__row js-phone-proposition"]'):
@@ -65,7 +61,8 @@ class MobielSpider(scrapy.Spider):
                 yield {
                     'url': response.request.url,
                     'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first().strip(),
-                    'provider': 't-mobile',
+                    'abo': 'FUTURE',
+                    'provider': response.request.url.split("/")[4],
                     'toestel': quote.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
                 }
             except:
