@@ -49,7 +49,7 @@ class BelsimpelSpider(scrapy.Spider):
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
             }
 
-class BelsimpelSpider(scrapy.Spider):
+class GsmwebSpider(scrapy.Spider):
     name = "belsimpelspider"
     start_urls = ['https://www.gsmweb.nl/t-mobile&extra_cat=compleet&abo_cat=per%20maand&duration=24%20maanden']
 
