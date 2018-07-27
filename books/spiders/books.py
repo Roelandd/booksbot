@@ -63,7 +63,7 @@ class MobielSpider(scrapy.Spider):
         for quote in response.xpath('//*[@class="proposed-phone__row js-phone-proposition"]'):
             yield {
                 'url': response.request.url,
-                'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first().strip(),
+                'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first(),
                 'provider': 't-mobile',
-                'toestel': quote.css('div.proposed-phone__image-and-name::text').extract()[0].strip(),
+                'toestel': quote.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
             }
