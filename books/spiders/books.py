@@ -77,3 +77,23 @@ class MobielSpider(scrapy.Spider):
                 }
             except:
                 continue
+                
+                
+class GsmwebSpider(scrapy.Spider):
+    name = "gsmwebspider"
+    start_urls = [
+        'https://www.gsmweb.nl/tele2&duration=24&abo_cat=per%20maand'
+    ]
+
+    def parse(self, response):
+        for quote in response.xpath('//*[@class="brand"]'):
+            try:
+                yield {
+                    'url': response.request.url,
+                    'prijs': ' ',
+                    'abo': 'FUTURE',
+                    'provider': response.css('h1').split(" ")[0],
+                    'toestel': quote.css('td.dark::text').extract()[1].strip(),
+                }
+            except:
+                continue
