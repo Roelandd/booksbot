@@ -59,4 +59,5 @@ class GsmwebSpider(scrapy.Spider):
             print(table)
             yield {
                 'url': response.request.url,
+                'table': table
             }
