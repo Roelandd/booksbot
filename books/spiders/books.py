@@ -55,9 +55,8 @@ class GsmwebSpider(scrapy.Spider):
 
     def parse(self, response):
         for quote in response.css('body'):
-            table = quote.xpath('//*[@class="listing"]/*/tbody').extract_first()
-            rows = table.split()
-            print(rows)
+            table = quote.css('tr.brand')
+            print(table)
             yield {
                 'url': response.request.url,
             }
