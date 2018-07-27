@@ -60,7 +60,7 @@ class MobielSpider(scrapy.Spider):
     start_urls = ['https://www.mobiel.nl/abonnement/t-mobile/t-mobile-go-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31300&%5Bmax_price_incl_btw%5D=0#']
 
     def parse(self, response):
-        for quote in response.css('proposed-phone__row js-phone-proposition'):
+        for quote in response.xpath('//*[@class="proposed-phone__row js-phone-proposition"]'):
             yield {
                 'url': response.request.url,
                 'prijs': quote.xpath('//*[@class="proposed-phone__recurring-price"]/text()').extract_first(),
