@@ -61,9 +61,12 @@ class MobielSpider(scrapy.Spider):
 
     def parse(self, response):
         for quote in response.xpath('//*[@class="proposed-phone__row js-phone-proposition"]'):
-            yield {
-                'url': response.request.url,
-                'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first(),
-                'provider': 't-mobile',
-                'toestel': quote.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
-            }
+            try:
+                yield {
+                    'url': response.request.url,
+                    'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first().strip(),
+                    'provider': 't-mobile',
+                    'toestel': quote.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
+                }
+            except:
+                continue
