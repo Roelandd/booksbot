@@ -65,5 +65,5 @@ class MobielSpider(scrapy.Spider):
                 'url': response.request.url,
                 'prijs': quote.css('span.proposed-phone__monthly-price::text').extract_first(),
                 'provider': 't-mobile',
-                'toestel': quote.css('div.proposed-phone__image-and-name::text').extract(),
+                'toestel': quote.css('div.proposed-phone__image-and-name::text').extract(2),
             }
