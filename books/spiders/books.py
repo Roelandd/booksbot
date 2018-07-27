@@ -49,7 +49,7 @@ class BelsimpelSpider(scrapy.Spider):
                 'toestel': quote.xpath('//*[@id="pd_title"]/text()').extract_first(),
             }
 
-class BelsimpelSpider(scrapy.Spider):
+class MobielSpider(scrapy.Spider):
     name = "mobielspider"
     devices = [
         '',
@@ -60,7 +60,7 @@ class BelsimpelSpider(scrapy.Spider):
     start_urls = ['https://www.mobiel.nl/abonnement/t-mobile/t-mobile-go-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=31300&%5Bmax_price_incl_btw%5D=0#']
 
     def parse(self, response):
-        for quote in response.css('section.proposition-phones-comparator__phone-list js-propositions-results'):
+        for quote in response.css('body'):
             yield {
                 'url': response.request.url,
                 'prijs': quote.xpath('//*[@class="proposed-phone__recurring-price"]/text()').extract_first(),
