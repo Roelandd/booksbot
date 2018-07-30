@@ -122,7 +122,7 @@ class MobielSpider(scrapy.Spider):
                 yield {
                     'url': response.request.url,
 #                   'prijs': float(item.css('span.proposed-phone__monthly-price::text').extract_first().strip()[2:4]),
-					'prijs': item.css('dd.proposition__price-details__value').extract()
+					'prijs': item.css('dd.proposition__price-details__value').extract(),
                     'abo': self.get_subscription(response.request.url),
                     'provider': response.request.url.split("/")[4],
                     'toestel': item.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
