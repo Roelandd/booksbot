@@ -68,7 +68,7 @@ class BelsimpelSpider(scrapy.Spider):
             yield {
                 'url': response.request.url,
                 'prijs': float(item.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first().strip()[2:-2].replace(',','')),
-                'maxtb': item.css('ul.js_fcs_table_rows > li').extract()[1],
+                'maxtb': item.css('ul.js_fcs_table_rows > li > label > span > span.text_nowrap::text').extract()[0],
                 'abo': self.get_subscription(response.request.url),
                 'provider': item.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first()[:-11].lower(),
                 'toestel': item.xpath('//*[@id="pd_title"]/text()').extract_first().strip(),
@@ -122,7 +122,6 @@ class MobielSpider(scrapy.Spider):
             try:
                 yield {
                     'url': response.request.url,
-#                   'prijs': float(item.css('span.proposed-phone__monthly-price::text').extract_first().strip()[2:4]),
 					'prijs': item.css('dd.proposition__price-details__value::text').extract()[1],
                     'abo': self.get_subscription(response.request.url),
                     'provider': response.request.url.split("/")[4],
