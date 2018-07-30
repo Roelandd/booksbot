@@ -39,7 +39,7 @@ class BelsimpelSpider(scrapy.Spider):
             url = 'http://www.belsimpel.nl/' + dev + 'aanbieding?abonnement=' + sub
             start_urls.append(url)
 
-    def get_subscription(url):
+    def get_subscription(self,url):
     	if 't-mobile-normaal-go-next-2-jaar-hsnwa' in url:
     		return 'go next'
     	elif 'vodafone-red-2-jaar' in url:
@@ -91,6 +91,30 @@ class MobielSpider(scrapy.Spider):
         'https://www.mobiel.nl/abonnement/kpn/kpn-basis-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=30871&%5Bmax_price_incl_btw%5D=0#',
         'https://www.mobiel.nl/abonnement/kpn/kpn-zorgeloos-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=30979&%5Bmax_price_incl_btw%5D=0#'
     ]
+
+    def get_subscription(url):
+    	if 't-mobile-go' in url:
+    		return 'go next'
+    	elif 'vodafone-2-jaar' in url:
+    		return 'red'
+    	elif 'vodafone-start-2-jaar' in url:
+    		return 'start xl'
+    	elif 't2-100-minuten-2000-mb-4g-2-jaar' in url:
+    		return '100/2000'
+    	elif 't2-100-minuten-5000-mb-4g-2-jaar' in url:
+    		return '100/5000'
+    	elif 't2-100-minuten-10000-mb-4g-2-jaar' in url:
+    		return '100/10000'
+    	elif 't2-onbeperkt-bellen-onbeperkt-mb-4g-2-jaar' in url:
+    		return 'onbeperkt'
+    	elif 'hollandsnieuwe-6000-mb-min-sms-4g-2-jaar' in url:
+    		return '6000 min/sms/mb'
+    	elif 'telfortnieuw-150-minuten-10000-mb-4g-2-jaar' in url:
+    		return '150/10000'
+    	elif 'kpn-basis-2-jaar' in url:
+    		return 'basis'
+    	elif 'kpn-zorgeloos-standaard-2-jaar' in url:
+    		return 'zorgeloos standaard'
 
     def parse(self, response):
         for item in response.xpath('//*[@class="proposed-phone__row js-phone-proposition"]'):
