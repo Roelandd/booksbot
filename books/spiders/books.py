@@ -7,11 +7,11 @@ class BelsimpelSpider(scrapy.Spider):
     devices = [
         'samsung-galaxy-s8/zwart/',
         'samsung-galaxy-s9/zwart/',
-        'samsung-galaxy-s9-plus/64gb-zwart',
+        'samsung-galaxy-s9-plus/64gb-zwart/',
         'apple-iphone-x/64gb-zwart/',
         'apple-iphone-8/64gb-zwart/',
         'apple-iphone-8-plus/64gb-zwart/',
-        'apple-iphone-7/32gb-zwart/'
+        'apple-iphone-7/32gb-zwart/',
         'oneplus-6/zwart/',
         'huawei-p20-lite/zwart/',
         'huawei-p20/zwart/',
@@ -23,6 +23,7 @@ class BelsimpelSpider(scrapy.Spider):
         'vodafone-red-2-jaar',
         'vodafone-red-iphonex-2-jaar',
         'vodafone-start-xl-2-jaar',
+        'vodafone-start-iphonex-xl-2-jaar',
         't2-100-minuten-2000-mb-4g-2-jaar',
         't2-100-minuten-5000-mb-4g-2-jaar',
         't2-100-minuten-10000-mb-4g-2-jaar',
