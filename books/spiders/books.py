@@ -28,7 +28,7 @@ class Iphone8_64Spider(scrapy.Spider):
                     if 'iphone 8 64' in item.css('div.proposed-phone__image-and-name::text').extract()[1].strip().lower():
                         yield {
                             'url': response.request.url,
-                            'prijs': float(item.css('span.proposed-phone__monthly-price::text').extract_first().strip()[2:4]),
+                            'prijs': float(item.('dd.proposition__price-details__value:nth-of-type(2)::text').extract_first().strip()[2:4]),
                             'abo': 'FUTURE',
                             'provider': response.request.url.split("/")[4],
                             'toestel': 'iphone8_64',
