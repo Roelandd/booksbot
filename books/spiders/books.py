@@ -68,7 +68,7 @@ class BelsimpelSpider(scrapy.Spider):
             yield {
                 'url': response.request.url,
                 'prijs': float(item.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first().strip()[2:-2].replace(',','')),
-                'abo': get_subscription(response.request.url),
+                'abo': self.get_subscription(response.request.url),
                 'provider': item.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first()[:-11].lower(),
                 'toestel': item.xpath('//*[@id="pd_title"]/text()').extract_first().strip(),
                 'shop': 'belsimpel'
