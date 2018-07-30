@@ -69,7 +69,7 @@ class BelsimpelSpider(scrapy.Spider):
             yield {
                 'url': response.request.url,
 #                'prijs': float(item.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first().strip()[2:-2].replace(',','')),
-                'toestelbundel': item.css('ul.js_fcs_table_rows > li > label > span > span.text_nowrap::text').extract()[0],
+                'toestelbundel': item.css('ul.js_fcs_table_rows > li > label > span > span.text_nowrap::text').extract()[0][2:],
                 'abo': self.get_subscription(response.request.url),
                 'provider': item.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first()[:-11].lower(),
                 'toestel': item.xpath('//*[@id="pd_title"]/text()').extract_first().strip(),
@@ -123,7 +123,7 @@ class MobielSpider(scrapy.Spider):
             try:
                 yield {
                     'url': response.request.url,
-					'prijs': item.css('dd.proposition__price-details__value::text').extract()[1],
+					'toestelbundel': item.css('dd.proposition__price-details__value::text').extract()[1],
                     'abo': self.get_subscription(response.request.url),
                     'provider': response.request.url.split("/")[4],
                     'toestel': item.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
