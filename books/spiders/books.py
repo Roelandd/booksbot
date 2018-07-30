@@ -99,21 +99,21 @@ class MobielSpider(scrapy.Spider):
     		return 'red'
     	elif 'vodafone-start-2-jaar' in url:
     		return 'start xl'
-    	elif 't2-100-minuten-2000-mb-4g-2-jaar' in url:
+    	elif '31233' in url:
     		return '100/2000'
-    	elif 't2-100-minuten-5000-mb-4g-2-jaar' in url:
+    	elif '31234' in url:
     		return '100/5000'
-    	elif 't2-100-minuten-10000-mb-4g-2-jaar' in url:
+    	elif '31235' in url:
     		return '100/10000'
-    	elif 't2-onbeperkt-bellen-onbeperkt-mb-4g-2-jaar' in url:
+    	elif '31236' in url:
     		return 'onbeperkt'
-    	elif 'hollandsnieuwe-6000-mb-min-sms-4g-2-jaar' in url:
+    	elif 'hollandsnieuwe' in url:
     		return '6000 min/sms/mb'
-    	elif 'telfortnieuw-150-minuten-10000-mb-4g-2-jaar' in url:
+    	elif 'telfort' in url:
     		return '150/10000'
-    	elif 'kpn-basis-2-jaar' in url:
+    	elif 'kpn-basis' in url:
     		return 'basis'
-    	elif 'kpn-zorgeloos-standaard-2-jaar' in url:
+    	elif 'kpn-zorgeloos' in url:
     		return 'zorgeloos standaard'
 
     def parse(self, response):
