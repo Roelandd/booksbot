@@ -58,7 +58,7 @@ class BelsimpelSpider(scrapy.Spider):
     		return '6000 min/sms/mb'
     	elif 'telfortnieuw-150-minuten-10000-mb-4g-2-jaar' in url:
     		return '150/10000'
-    	elif 'kpn-basis-2-jaar'
+    	elif 'kpn-basis-2-jaar' in url:
     		return 'basis'
     	elif 'kpn-zorgeloos-standaard-2-jaar' in url:
     		return 'zorgeloos standaard'
