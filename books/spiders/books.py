@@ -41,7 +41,7 @@ class BelsimpelSpider(scrapy.Spider):
         for item in response.css('div.pd_chosen_offer_cta'):
             yield {
                 'url': response.request.url,
-                'prijs': float(item.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first().strip().replace(',','')[2:][:2]),
+                'prijs': float(item.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first().strip()[2:-2].replace(',','')),
                 'abo': 'FUTURE',
                 'provider': item.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first(),
                 'toestel': item.xpath('//*[@id="pd_title"]/text()').extract_first(),
