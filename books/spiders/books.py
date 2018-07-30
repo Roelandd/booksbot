@@ -1,4 +1,5 @@
 import scrapy
+import math
 
 class BelsimpelSpider(scrapy.Spider):
     name = "belsimpelspider"
@@ -43,8 +44,8 @@ class BelsimpelSpider(scrapy.Spider):
                 'url': response.request.url,
                 'prijs': float(item.xpath('//*[@class="pd_offer_picker_row pd_offer_picker_row_hardware_cost"]/*/text()').extract_first().strip()[2:-2].replace(',','')),
                 'abo': 'FUTURE',
-                'provider': item.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first(),
-                'toestel': item.xpath('//*[@id="pd_title"]/text()').extract_first(),
+                'provider': item.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first()[:-11],
+                'toestel': item.xpath('//*[@id="pd_title"]/text()').extract_first().strip(),
                 'shop': 'belsimpel'
             }
 
@@ -71,7 +72,7 @@ class MobielSpider(scrapy.Spider):
             try:
                 yield {
                     'url': response.request.url,
-                    'prijs': item.css('span.proposed-phone__monthly-price::text').extract_first().strip()[2:4],
+                    'prijs': float(item.css('span.proposed-phone__monthly-price::text').extract_first().strip()[2:4]),
                     'abo': 'FUTURE',
                     'provider': response.request.url.split("/")[4],
                     'toestel': item.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
