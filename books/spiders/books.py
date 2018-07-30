@@ -92,7 +92,7 @@ class MobielSpider(scrapy.Spider):
         'https://www.mobiel.nl/abonnement/kpn/kpn-zorgeloos-2-jaar?utf8=%E2%9C%93&%5Bmain_bundle%5D=30979&%5Bmax_price_incl_btw%5D=0#'
     ]
 
-    def get_subscription(url):
+    def get_subscription(self,url):
     	if 't-mobile-go' in url:
     		return 'go next'
     	elif 'vodafone-2-jaar' in url:
@@ -122,7 +122,7 @@ class MobielSpider(scrapy.Spider):
                 yield {
                     'url': response.request.url,
                     'prijs': float(item.css('span.proposed-phone__monthly-price::text').extract_first().strip()[2:4]),
-                    'abo': 'FUTURE',
+                    'abo': self.get_subscription(response.request.url),
                     'provider': response.request.url.split("/")[4],
                     'toestel': item.css('div.proposed-phone__image-and-name::text').extract()[1].strip(),
                     'shop': 'mobiel'
