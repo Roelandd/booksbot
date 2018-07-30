@@ -21,7 +21,7 @@ class BelsimpelSpider(scrapy.Spider):
         't-mobile-normaal-go-next-2-jaar-hsnwa3',
         't-mobile-normaal-go-next-2-jaar-hsnwa',
         'vodafone-red-2-jaar',
-        'vodafone-red-iphonex-2-jaar'
+        'vodafone-red-iphonex-2-jaar',
         'vodafone-start-xl-2-jaar',
         't2-100-minuten-2000-mb-4g-2-jaar',
         't2-100-minuten-5000-mb-4g-2-jaar',
