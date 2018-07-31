@@ -69,7 +69,7 @@ class BelsimpelSpider(scrapy.Spider):
             yield {
                 'url': response.request.url,
                 'toestelbundel': item.css('ul.js_fcs_table_rows > li > label > span > span.text_nowrap::text').extract()[0][2:],
-                'bijbetaal': item.css('ul.js_fcs_table_rows > li > label > span.pull_right').extract_first()[2:],
+                'bijbetaal': item.css('ul.js_fcs_table_rows > li > label > span.pull_right::text').extract_first(),
                 'abo': self.get_subscription(response.request.url),
                 'provider': item.xpath('//*[@class="pd_offer_picker_product_images_provider"]/*/@alt').extract_first()[:-11].lower(),
                 'toestel': item.xpath('//*[@id="pd_title"]/text()').extract_first().strip(),
