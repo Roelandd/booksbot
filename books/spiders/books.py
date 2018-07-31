@@ -1,6 +1,5 @@
 import scrapy
 import math
-
 class BelsimpelSpider(scrapy.Spider):
 
     name = "belsimpelspider"
@@ -29,7 +28,7 @@ class BelsimpelSpider(scrapy.Spider):
         'samsung-galaxy-s8-plus/zwart/',
         'samsung-galaxy-s9/zwart/',
         'samsung-galaxy-s9/256gb-zwart/',
-        'samsung-galaxy-s9-plus/64gb-zwart/',
+        'samsung-galaxy-s9-plus/zwart/',
         'samsung-galaxy-note-8/zwart/',
         'huawei-p20-lite/zwart/',
         'huawei-p20/zwart/',
@@ -52,6 +51,7 @@ class BelsimpelSpider(scrapy.Spider):
     subscriptions = [
         't-mobile-normaal-go-next-2-jaar-hsnwa3',
         't-mobile-normaal-go-next-2-jaar-hsnwa',
+        't-mobile-normaal-go-next-2-jaar',
         'vodafone-red-2-jaar',
         'vodafone-red-iphonex-2-jaar',
         'vodafone-start-xl-2-jaar',
