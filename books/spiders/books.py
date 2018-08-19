@@ -73,7 +73,7 @@ class BelsimpelSpider(scrapy.Spider):
             start_urls.append(url)
 
     def get_subscription(self,url):
-    	if 't-mobile-normaal-go-next-2-jaar-hsnwa' in url:
+    	if 't-mobile-normaal-go-next-2-jaar' in url:
     		return 'go next'
     	elif 'vodafone-red-2-jaar' in url:
     		return 'red'
