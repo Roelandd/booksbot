@@ -77,8 +77,12 @@ class BelsimpelSpider(scrapy.Spider):
     		return 'go next'
     	elif 'vodafone-red-2-jaar' in url:
     		return 'red'
+        elif 'vodafone-red-iphonex-2-jaar' in url:
+    		return 'red'
     	elif 'vodafone-start-xl-2-jaar' in url:
-    		return 'start xl'
+    	    return 'start xl'
+        elif 'vodafone-start-iphonexl-2-jaar' in url:
+            return 'start xl'
     	elif 't2-100-minuten-2000-mb-4g-2-jaar' in url:
     		return '100/2000'
     	elif 't2-100-minuten-5000-mb-4g-2-jaar' in url:
